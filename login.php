@@ -7,7 +7,7 @@ if (isset($_POST['email']) && !empty($_POST['email'])) {
     $email = addslashes($_POST['email']);
     $senha = md5(addslashes($_POST['senha']));
 
-    $_SESSION['id'] = $usuarios->exiteUsuario($email, $senha);
+    $_SESSION['id'] = $usuarios->existeUsuario($email, $senha);
 
     header("Location: index.php");
 }
