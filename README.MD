@@ -1,0 +1,1 @@
+Sistema de estoque desenvolvido com PHP Orientado a Objetos e Bootstrap 4.
