@@ -6,8 +6,10 @@ $usuarios = new Usuarios();
 if (isset($_POST['email']) && !empty($_POST['email'])) {
     $email = addslashes($_POST['email']);
     $senha = md5(addslashes($_POST['senha']));
+    $usuarios->setEmail($email);
+    $usuarios->setSenha($senha);
 
-    $_SESSION['id'] = $usuarios->existeUsuario($email, $senha);
+    $_SESSION['id'] = $usuarios->existeUsuario();
 
     header("Location: index.php");
 }
