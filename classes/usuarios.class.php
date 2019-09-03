@@ -2,6 +2,9 @@
 class Usuarios
 {
     private $pdo;
+    private $id;
+    private $email;
+    private $senha;
 
     public function __construct()
     {
@@ -12,12 +15,30 @@ class Usuarios
         }
     }
 
-    public function existeUsuario($email, $senha)
+    public function getId()
     {
-        $sql = $this->pdo->prepare("SELECT * FROM usuarios WHERE email = :email AND senha = :senha");
-        $sql->bindValue(":email", $email);
-        $sql->bindValue(":senha", $senha);
-        $sql->execute();
+        return $this->id;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function setEmail($e)
+    {
+        $this->email = $e;
+    }
+
+    public function setSenha($s)
+    {
+        $this->senha = $s;
+    }
+
+    public function existeUsuario()
+    {
+        $sql = $this->pdo->prepare("SELECT * FROM usuarios WHERE email = ? AND senha = ?");
+        $sql->execute(array($this->email, $this->senha));
 
         if ($sql->rowCount() > 0) {
             $dado = $sql->fetch();
