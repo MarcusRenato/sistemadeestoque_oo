@@ -1,11 +1,12 @@
 <?php
 session_start();
 require 'classes/produtos.class.php';
-$produto = new Produtos();
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = addslashes($_GET['id']);
-    $info = $produto->readProduto($id);
+
+    $produto = new Produtos($id);
+    $info = $produto->readProduto();
 }
 require 'pages/header.php';
 ?>

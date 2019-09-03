@@ -1,6 +1,5 @@
 <?php
 require 'classes/produtos.class.php';
-$p = new Produtos();
 
 if (isset($_POST['descricao']) && !empty($_POST['descricao'])) {
     $id = addslashes($_POST['id']);
@@ -8,7 +7,12 @@ if (isset($_POST['descricao']) && !empty($_POST['descricao'])) {
     $descricao = addslashes($_POST['descricao']);
     $preco = addslashes($_POST['preco']);
 
-    $p->updateProduto($id, $descricao, $quantidade, $preco);
+    $p = new Produtos($id);
+
+    $p->setDescricao($descricao);
+    $p->setPreco($preco);
+    $p->setQuantidade($quantidade);
+    $p->updateProduto();
 
     header("Location: index.php");
 }

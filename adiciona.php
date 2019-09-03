@@ -6,6 +6,9 @@ if (isset($_POST['descricao']) && !empty($_POST['descricao'])) {
     $descricao = addslashes($_POST['descricao']);
     $preco = addslashes($_POST['preco']);
     
-    $produto->createProduto($descricao, $quantidade, $preco);
+    $produto->setDescricao($descricao);
+    $produto->setPreco($preco);
+    $produto->setQuantidade($quantidade);
+    $produto->createProduto();
     header("Location: index.php");
 }

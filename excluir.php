@@ -1,9 +1,9 @@
 <?php
 require 'classes/produtos.class.php';
-$produto = new Produtos();
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = addslashes($_GET['id']);
 
-    $produto->deleteProduto($id);
+    $produto = new Produtos($id);
+    $produto->deleteProduto();
     header("Location: index.php");
 }

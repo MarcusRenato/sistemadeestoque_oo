@@ -8,7 +8,7 @@ class Produtos
     private $quantidade;
     private $preco;
 
-    public function __construct($id = null)
+    public function __construct($i = null)
     {
         try {
             $this->pdo = new PDO("mysql:dbname=estoque;host=localhost", "root", "");
@@ -16,9 +16,9 @@ class Produtos
             echo "Erro: " . $e->getMessage();
         }
         
-        if (!empty($id)) {
+        if (!empty($i)) {
             $sql = $this->pdo->prepare("SELECT * FROM produtos WHERE id = ?");
-            $sql->execute(array($this->id));
+            $sql->execute(array($i));
 
             if ($sql->rowCount() > 0) {
                 $dado = $sql->fetch();
